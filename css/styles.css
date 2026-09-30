@@ -231,6 +231,8 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
   .brush-copy { width: 90%; }
   .brush-copy h2 { font-size: 17px; }
   .brush-copy p { font-size: 12px; }
+  /* En computadora las opciones van dentro de nubes; en pantallas chicas "Clases Presenciales" lleva un recuadro como el del test. */
+  .hero-cloud-1 .brush-copy { padding: 14px 10px; background: var(--cream-pink); }
   .hero-test { grid-column: 1 / 3; grid-row: 2; min-height: auto; padding: 10px 8vw 24px; }
   .test-invitation { width: min(100%, 700px); }
   .about-section { min-height: auto; padding-block: 52px; }
