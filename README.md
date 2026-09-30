@@ -22,5 +22,5 @@ Abrí `index.html` en el navegador.
 
 ## Publicación
 
-Se publica con GitHub Pages desde la rama `main`, carpeta raíz:
-https://leguizamonfrancis6.github.io/English-Lessons/
+Se publica con Netlify en cada push a la rama `main`:
+https://englishles.netlify.app/
