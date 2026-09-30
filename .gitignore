@@ -1,0 +1,13 @@
+# Material de trabajo: queda en la carpeta local pero no se publica
+*.zip
+textos.txt
+Encuesta.txt
+dar2.jpeg
+imagen*.png
+assets/img/darlene.jpg
+assets/img/darlene-silhouette.png
+
+# Sistema
+desktop.ini
+Thumbs.db
+.DS_Store

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evaluá tu nivel de inglés con esta prueba breve y privada de Darlene Leguizamon.">
+  <meta name="theme-color" content="#FAF8F3">
+  <title>Test de nivel | English Lessons</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/questions.js" defer></script>
+  <script src="js/test.js" defer></script>
+</head>
+<body class="test-page">
+  <header class="test-header">
+    <a class="wordmark" href="index.html">English <span>Lessons</span></a>
+    <a class="back-link" href="index.html">← Volver al inicio</a>
+  </header>
+  <main class="test-main">
+    <section class="test-panel" id="test-welcome" aria-labelledby="test-title">
+      <p class="eyebrow">Una evaluación para conocerte mejor</p>
+      <h1 id="test-title">Test de nivel de inglés</h1>
+      <p class="test-lead">Respondé 15 preguntas de opción múltiple a tu ritmo. El tiempo máximo es de 20 minutos.</p>
+      <ul class="test-facts"><li><span>15</span> preguntas</li><li><span>20 min</span> tiempo máximo</li></ul>
+      <p class="privacy-note">Tus respuestas no se guardan en ningún lado.</p>
+      <button class="button button-dark" id="start-test" type="button">Comenzar <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="quiz-section" id="quiz-screen" hidden aria-label="Preguntas del test">
+      <div class="quiz-toolbar"><div class="quiz-progress-copy"><span id="answered-count">0</span> de <span id="total-count">15</span> respondidas</div><div class="timer" id="timer" role="timer" aria-live="off" aria-label="Tiempo restante">20:00</div></div>
+      <div class="progress-track" id="progress-track" role="progressbar" aria-label="Progreso del test" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0"><span id="progress-fill"></span></div>
+      <p class="quiz-instruction">Elegí una opción en cada pregunta.</p>
+      <form id="quiz-form"><div id="questions-container" class="questions-list"></div><button class="button button-dark finish-button" type="submit">Finalizar examen <span aria-hidden="true">→</span></button></form>
+    </section>
+
+    <section class="result-panel" id="result-screen" hidden aria-live="polite" aria-labelledby="result-title">
+      <p class="eyebrow">Evaluación finalizada</p><h1 id="result-title" tabindex="-1">Tu resultado</h1>
+      <div class="result-score"><span id="score-percentage">0</span><span>%</span></div>
+      <p id="result-message" class="result-message"></p><p class="result-detail" id="result-detail"></p>
+      <div class="result-actions"><a class="button button-dark" href="https://wa.me/5493425202975" target="_blank" rel="noopener noreferrer">Hablemos por WhatsApp <span aria-hidden="true">↗</span></a><a class="button button-outline" href="index.html">Volver al inicio</a></div>
+    </section>
+  </main>
+  <footer class="site-footer test-footer"><a class="wordmark" href="index.html">English <span>Lessons</span></a><span>Darlene Leguizamon</span></footer>
+</body>
+</html>
