@@ -22,5 +22,7 @@ Abrí `index.html` en el navegador.
 
 ## Publicación
 
-Se publica con GitHub Pages en cada push a la rama `main` (carpeta raíz):
-https://leguizamonfrancis6.github.io/English-Lessons/
+Se publica con GitHub Pages en cada push a la rama `main` (carpeta raíz), con el dominio propio:
+https://englishlessons.com.ar/
+
+El dominio está registrado en NIC Argentina y delegado a Cloudflare (DNS sin proxy), donde apunta a GitHub Pages.
