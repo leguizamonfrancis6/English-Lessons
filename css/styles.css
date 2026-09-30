@@ -233,8 +233,11 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
   .brush-copy { width: 90%; }
   .brush-copy h2 { font-size: 17px; }
   .brush-copy p { font-size: 12px; }
-  /* En computadora las opciones van dentro de nubes; en pantallas chicas llevan un recuadro como el del test, todos del mismo alto. */
-  .brush-copy { display: flex; min-height: 118px; flex-direction: column; justify-content: center; padding: 14px 10px; background: var(--cream-pink); }
+  /* Nubes en pantallas chicas: la forma de la nube como fondo que se estira a toda la opción (en computadora siguen los SVG del HTML). */
+  .brush-item { --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='812 305 284 147' preserveAspectRatio='none'%3E%3Cpath fill='%23FCF5F3' fill-rule='evenodd' d='M930.5 305.5L917.5 307.2L898.5 312.2L887.5 316.3L874.5 322.1L860.5 330.3L853.5 335.3L844.4 343.5L837.4 351.5L834 357.5L832.2 362.5L832 365.5L833.5 365.3L833.9 366.5L832 369.5L831.4 372.5L832.2 375.5L833.5 376.3L837.5 374.2L838.2 374.5L838.5 375.5L826.5 384.9L818 393.5L814.1 400.5L812.4 406.5L812.2 409.5L812.3 413.5L813.2 417.5L816.5 423.5L823.5 428.9L827.5 429.3L826.9 431.5L827.5 432.9L833.5 436.7L835.6 436.5L836.1 438.5L837.5 439.8L843.5 443.6L853.5 448L859.5 449.9L869.5 451.3L879.5 451.1L891.5 449.9L922.5 444.3L938.5 442.7L949.5 442.3L957.5 442.4L968.5 443.5L976.5 445.1L993.5 449.7L1004.5 451.6L1013.5 451.8L1025.5 450.8L1031.5 449.9L1039.5 447.7L1055.5 441.5L1056.3 440.5L1054.2 439.5L1069.5 431.9L1078.5 425.9L1085.9 418.5L1089.8 413.5L1093.8 406.5L1094.9 402.5L1095.3 397.5L1094.5 396.7L1089.5 398.7L1088.7 398.5L1089 397.5L1092.2 394.5L1095.4 390.5L1095.6 389.5L1093.5 387.5L1092.5 387.3L1085.5 391.1L1084.5 391.4L1084 390.5L1089.8 381.5L1090.9 377.5L1090.7 375.5L1088.5 371L1082.5 375.1L1081.5 375.5L1080.8 374.5L1085.8 369.5L1086.3 367.5L1085.5 366.9L1083.5 368.2L1081.5 367.5L1078.5 368.1L1075.5 369.2L1072.5 371.1L1071.9 370.5L1073.2 366.5L1074.2 359.5L1071.8 351.5L1070.7 348.5L1068.1 344.5L1062.5 338.4L1059.5 335.9L1051.5 331.4L1041.5 327.2L1033.5 325.1L1024.5 324.2L1015.5 324.1L1007.5 325L990.5 328.2L979.5 327.9L978.4 327.5L979.1 326.5L981.5 325.1L985.5 325.9L992.5 323.8L996.6 323.5L993.3 319.5L993.1 318.5L993.8 317.5L993.5 317.1L987.5 314.1L972.5 308.2L963.5 306.2L945.5 304.8Z'/%3E%3Cpath fill='%23F8E0DE' fill-rule='evenodd' d='M924.5 325.4L910.5 328.5L901.5 331.6L889.5 336.7L880.5 342.2L870.5 350.1L863 358.5L857 369.5L855.4 375.5L854.7 376.5L852.5 376.3L849.5 377.5L846.5 379.5L844 382.5L843.8 385.5L845.3 392.5L841.9 399.5L840.9 406.5L841.4 410.5L843.5 416.5L849.5 423.4L853.5 426.6L857.2 428.5L859.5 431.1L868.5 436.9L873.5 438.7L883.5 440.6L896.5 441.9L911.5 440.8L924.5 439L939.5 440L940.5 439L960.5 439L961.5 440L971.5 439.9L972.5 440.9L976.5 441L977.5 442L980.5 442L981.5 443L984.5 442.9L985.5 443.6L1003.5 442.7L1021.5 439.1L1030.5 436.7L1034.5 435L1051.5 424.1L1055.1 420.5L1061.8 411.5L1064.6 406.5L1067.6 398.5L1068.1 392.5L1067.8 386.5L1066.9 383.5L1065.8 381.5L1063.5 379.7L1060.5 379.9L1059.2 379.5L1059.1 374.5L1058.1 369.5L1053.9 361.5L1050.5 356.5L1047.5 353.8L1036.5 347.7L1032.8 344.5L1023.5 341.4L1018.5 336.7L1015.5 335L998.5 330.3L997.5 330.2L996.5 330.9L975.5 331L974.5 328.6L961.5 330.7L953.5 328L941.5 325.2Z'/%3E%3C/svg%3E"); position: relative; background: var(--cloud) center / 100% 160px no-repeat; }
+  .brush-copy { position: static; width: 74%; }
+  /* Toda la nube funciona como link: el ::after del enlace cubre la opción completa. */
+  .brush-copy a::after { position: absolute; z-index: 2; inset: 0; content: ""; }
   .hero-test { grid-column: 1 / 3; grid-row: 2; min-height: auto; padding: 10px 8vw 24px; }
   .test-invitation { width: min(100%, 700px); background: var(--cream-pink); }
   .about-section { min-height: auto; padding-block: 52px; }
@@ -253,32 +256,36 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
 }
 
 @media (max-width: 600px) {
-  html { scroll-padding-top: 92px; }
-  .site-header { height: auto; min-height: 86px; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; row-gap: 2px; align-content: center; padding: 8px 18px; }
-  .site-header .wordmark { grid-column: 1; grid-row: 1; justify-self: start; font-size: 19px; }
-  .site-header .header-person { grid-column: 1 / 3; grid-row: 2; justify-self: center; font-size: 17px; }
-  .site-header .site-nav { grid-column: 2; grid-row: 1; gap: 0; }
-  .site-header .site-nav a { font-size: 12px; }
+  html { scroll-padding-top: 62px; }
+  /* Header en un solo renglón: marca, nombre y Contacto; los tamaños escalan con el ancho para entrar desde 320 px. */
+  .site-header { height: 56px; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 8px; padding: 0 12px; }
+  .site-header .wordmark { justify-self: start; font-size: clamp(13px, 4vw, 18px); }
+  .site-header .header-person { justify-self: center; font-size: clamp(12px, 3.6vw, 16px); }
+  .site-header .site-nav { gap: 0; }
+  .site-header .site-nav a { font-size: clamp(11px, 3.4vw, 14px); }
   .test-header { height: 66px; padding-inline: 19px; }
   .test-header .wordmark { font-size: 18px; }
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: calc(min(70svh, 560px) - 86px) auto auto; min-height: auto; padding-top: 86px; background-color: var(--warm-white); }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: calc(min(70svh, 560px) - 56px) auto auto; min-height: auto; padding-top: 56px; background-color: var(--warm-white); }
   /* La ilustración está a la izquierda de la imagen (~22% del ancho): se corre el encuadre para que quede centrada. */
   .hero::before { height: min(70svh, 560px); background-position: 5% bottom; background-size: auto min(58svh, 520px); }
   .hero-column { width: 100%; padding-inline: 24px; }
   .hero-story { grid-column: 1; grid-row: 1; min-height: 0; padding: 74px 24px 20px; }
   .hero-story h1 { max-width: 390px; font-size: 30px; line-height: 1.12; }
   .hero .hero-title { max-width: 390px; margin: 74px 24px 0; font-size: 30px; line-height: 1.12; }
-  .hero-options { grid-column: 1; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(145px, auto)); gap: 2px; padding: 16px 12px; }
-  .brush-copy { width: 92%; }
-  .brush-copy h2 { font-size: 17px; }
-  .brush-copy p { font-size: 12px; }
-  .hero-test { grid-column: 1; grid-row: 3; min-height: auto; padding: 14px 24px 38px; }
+  .hero-options { grid-column: 1; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(170px, auto)); gap: 6px; padding: 14px 10px 6px; }
+  /* Sobre el fondo crema las nubes van en rosa (el blanco de computadora no se vería). */
+  .brush-item { --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='812 305 284 147' preserveAspectRatio='none'%3E%3Cpath fill='%23FBE7DE' fill-rule='evenodd' d='M930.5 305.5L917.5 307.2L898.5 312.2L887.5 316.3L874.5 322.1L860.5 330.3L853.5 335.3L844.4 343.5L837.4 351.5L834 357.5L832.2 362.5L832 365.5L833.5 365.3L833.9 366.5L832 369.5L831.4 372.5L832.2 375.5L833.5 376.3L837.5 374.2L838.2 374.5L838.5 375.5L826.5 384.9L818 393.5L814.1 400.5L812.4 406.5L812.2 409.5L812.3 413.5L813.2 417.5L816.5 423.5L823.5 428.9L827.5 429.3L826.9 431.5L827.5 432.9L833.5 436.7L835.6 436.5L836.1 438.5L837.5 439.8L843.5 443.6L853.5 448L859.5 449.9L869.5 451.3L879.5 451.1L891.5 449.9L922.5 444.3L938.5 442.7L949.5 442.3L957.5 442.4L968.5 443.5L976.5 445.1L993.5 449.7L1004.5 451.6L1013.5 451.8L1025.5 450.8L1031.5 449.9L1039.5 447.7L1055.5 441.5L1056.3 440.5L1054.2 439.5L1069.5 431.9L1078.5 425.9L1085.9 418.5L1089.8 413.5L1093.8 406.5L1094.9 402.5L1095.3 397.5L1094.5 396.7L1089.5 398.7L1088.7 398.5L1089 397.5L1092.2 394.5L1095.4 390.5L1095.6 389.5L1093.5 387.5L1092.5 387.3L1085.5 391.1L1084.5 391.4L1084 390.5L1089.8 381.5L1090.9 377.5L1090.7 375.5L1088.5 371L1082.5 375.1L1081.5 375.5L1080.8 374.5L1085.8 369.5L1086.3 367.5L1085.5 366.9L1083.5 368.2L1081.5 367.5L1078.5 368.1L1075.5 369.2L1072.5 371.1L1071.9 370.5L1073.2 366.5L1074.2 359.5L1071.8 351.5L1070.7 348.5L1068.1 344.5L1062.5 338.4L1059.5 335.9L1051.5 331.4L1041.5 327.2L1033.5 325.1L1024.5 324.2L1015.5 324.1L1007.5 325L990.5 328.2L979.5 327.9L978.4 327.5L979.1 326.5L981.5 325.1L985.5 325.9L992.5 323.8L996.6 323.5L993.3 319.5L993.1 318.5L993.8 317.5L993.5 317.1L987.5 314.1L972.5 308.2L963.5 306.2L945.5 304.8Z'/%3E%3Cpath fill='%23FDF0EA' fill-rule='evenodd' d='M924.5 325.4L910.5 328.5L901.5 331.6L889.5 336.7L880.5 342.2L870.5 350.1L863 358.5L857 369.5L855.4 375.5L854.7 376.5L852.5 376.3L849.5 377.5L846.5 379.5L844 382.5L843.8 385.5L845.3 392.5L841.9 399.5L840.9 406.5L841.4 410.5L843.5 416.5L849.5 423.4L853.5 426.6L857.2 428.5L859.5 431.1L868.5 436.9L873.5 438.7L883.5 440.6L896.5 441.9L911.5 440.8L924.5 439L939.5 440L940.5 439L960.5 439L961.5 440L971.5 439.9L972.5 440.9L976.5 441L977.5 442L980.5 442L981.5 443L984.5 442.9L985.5 443.6L1003.5 442.7L1021.5 439.1L1030.5 436.7L1034.5 435L1051.5 424.1L1055.1 420.5L1061.8 411.5L1064.6 406.5L1067.6 398.5L1068.1 392.5L1067.8 386.5L1066.9 383.5L1065.8 381.5L1063.5 379.7L1060.5 379.9L1059.2 379.5L1059.1 374.5L1058.1 369.5L1053.9 361.5L1050.5 356.5L1047.5 353.8L1036.5 347.7L1032.8 344.5L1023.5 341.4L1018.5 336.7L1015.5 335L998.5 330.3L997.5 330.2L996.5 330.9L975.5 331L974.5 328.6L961.5 330.7L953.5 328L941.5 325.2Z'/%3E%3C/svg%3E"); background-size: 100% 100%; }
+  .brush-copy { width: 76%; }
+  .brush-copy h2 { font-size: 16px; }
+  .brush-copy p { margin-top: 5px; font-size: 14px; line-height: 1.3; }
+  .hero-test { grid-column: 1; grid-row: 3; min-height: auto; padding: 10px 24px 8px; }
   .test-invitation { width: 100%; padding: 21px 17px; }
   .test-card-label { font-size: 15px; }
   .test-invitation h2 { font-size: 23px; }
-  .test-invitation > p:not(.test-card-label) { font-size: 12px; }
+  .test-invitation > p:not(.test-card-label) { font-size: 14px; }
+  .invitation-note { font-size: 13px; }
   .section-wrap { width: min(calc(100% - 42px), var(--content)); }
-  .about-section { padding-block: 77px 80px; }
+  .about-section { padding-block: 44px 64px; }
   .about-layout { grid-template-columns: 1fr; gap: 32px; }
   .portrait-frame { width: min(78%, 320px); min-height: 340px; margin-inline: auto; }
   .portrait-frame img { max-height: 340px; }
@@ -300,9 +307,10 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
   .result-panel h1 { font-size: 42px; }
   .test-facts { gap: 25px; }
   .quiz-section { padding-top: 5px; }
-  .question-block { padding-block: 22px; }
+  .question-block { padding-block: 18px; }
   .question-block legend { font-size: 18px; }
-  .answer-options { grid-template-columns: 1fr; gap: 7px; margin-left: 43px; }
+  .answer-options { grid-template-columns: 1fr; gap: 7px; margin: 10px 0 0 43px; }
+  .answer-option { font-size: 14px; }
   .answer-option { min-height: 42px; }
   .result-actions { flex-direction: column; }
 }
