@@ -224,6 +224,9 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
   .hero-story h1 { max-width: 340px; font-size: 31px; }
   .hero-stage,
   .hero-canvas { display: contents; }
+  /* .hero-stage tiene pointer-events: none (se hereda): sin esto no se pueden tocar las opciones ni el botón del test. */
+  .hero-options,
+  .hero-test { pointer-events: auto; }
   .hero .hero-title::after { width: 8em; }
   .hero .hero-title { position: relative; z-index: 1; top: auto; left: auto; grid-column: 1; grid-row: 1; align-self: start; max-width: 340px; margin: 96px 18px 0 32px; font-size: 31px; white-space: normal; }
   .hero-options { grid-column: 2; grid-row: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(150px, 1fr)); gap: 4px; padding: 22px 10px; }
