@@ -265,10 +265,12 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
   .site-header .site-nav { display: none; }
   .test-header { height: 66px; padding-inline: 19px; }
   .test-header .wordmark { font-size: 18px; }
-  .hero { --hero-img: clamp(360px, 58svh, 520px); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: var(--hero-img) auto auto; min-height: auto; padding-top: 56px; background-color: var(--warm-white); }
+  /* La imagen ocupa toda la primera pantalla debajo del header: las nubes recién aparecen al scrollear. */
+  .hero { --hero-img: max(360px, calc(100svh - 56px)); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: var(--hero-img) auto auto; min-height: auto; padding-top: 56px; background-color: var(--warm-white); }
   /* La ilustración está a la izquierda de la imagen (~22% del ancho): se corre el encuadre para que quede centrada. */
   /* La imagen empieza justo debajo del header (56 px) y la zona mide lo mismo que la imagen: sin franja crema arriba. */
-  .hero::before { top: 56px; height: var(--hero-img); background-position: 5% bottom; background-size: auto var(--hero-img); }
+  /* El centro de la ilustración está en x = 388 de 901 px de alto (43,06%): se alinea con el centro de la pantalla. */
+  .hero::before { top: 56px; height: var(--hero-img); background-position: calc(50vw - var(--hero-img) * .4306) bottom; background-size: auto var(--hero-img); }
   .hero-column { width: 100%; padding-inline: 24px; }
   .hero-story { grid-column: 1; grid-row: 1; min-height: 0; padding: 74px 24px 20px; }
   .hero-story h1 { max-width: 390px; font-size: 30px; line-height: 1.12; }
