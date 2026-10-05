@@ -135,8 +135,8 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
 .section-kicker span:first-child { color: var(--terracotta); }
 .about-layout { display: grid; width: 100%; grid-template-columns: minmax(190px, .66fr) minmax(0, 1.12fr) minmax(0, 1.22fr); align-items: center; gap: clamp(22px, 3vw, 42px); }
 .portrait-frame { position: relative; display: flex; min-height: 390px; align-items: center; justify-content: center; margin: 0; }
-.portrait-frame::before { position: absolute; z-index: 0; inset: 12% 5% 10%; background: var(--cream-pink); content: ""; }
-.portrait-frame img { position: relative; z-index: 1; display: block; width: 100%; max-height: 390px; object-fit: contain; }
+/* El recuadro crema es el fondo de la propia foto: el corte a la altura de los codos coincide siempre con su borde inferior. */
+.portrait-frame img { position: relative; z-index: 1; display: block; width: 100%; height: auto; max-height: 390px; object-fit: contain; background: var(--cream-pink); }
 .about-copy h2 { margin-bottom: 16px; font-size: clamp(33px, 3.5vw, 46px); }
 .about-copy > p:not(.eyebrow) { max-width: 640px; margin: 0 0 12px; color: var(--hair-brown); font-size: 13px; line-height: 1.65; }
 .text-link { display: inline-flex; gap: 12px; margin-top: 6px; padding-bottom: 5px; color: var(--terracotta); border-bottom: 1px solid currentColor; font-size: 13px; font-weight: 700; text-decoration: none; }
