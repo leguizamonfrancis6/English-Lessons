@@ -11,6 +11,7 @@ const progressFill = document.querySelector("#progress-fill");
 const answeredCount = document.querySelector("#answered-count");
 const answers = Array(questions.length).fill(null);
 let secondsRemaining = EXAM_DURATION_SECONDS;
+let examDeadline;
 let timerInterval;
 let examFinished = false;
 
@@ -20,13 +21,13 @@ function renderQuestions() {
       <label class="answer-option">
         <input type="radio" name="question-${questionIndex}" value="${optionIndex}">
         <span class="answer-marker" aria-hidden="true"></span>
-        <span>${option}</span>
+        <span lang="en">${option}</span>
       </label>
     `).join("");
 
     return `
       <fieldset class="question-block">
-        <legend><span class="question-number">${String(questionIndex + 1).padStart(2, "0")}</span>${question.prompt}</legend>
+        <legend><span class="question-number">${String(questionIndex + 1).padStart(2, "0")}</span><span lang="en">${question.prompt}</span></legend>
         <div class="answer-options">${optionsMarkup}</div>
       </fieldset>
     `;
@@ -46,7 +47,9 @@ function updateProgress() {
   progressFill.style.width = `${(completed / questions.length) * 100}%`;
 }
 
+// El tiempo se calcula contra la hora de fin: si el celular frena el intervalo (pestaña en segundo plano), al volver el reloj se pone al día.
 function updateTimer() {
+  if (examDeadline) secondsRemaining = Math.max(0, Math.ceil((examDeadline - Date.now()) / 1000));
   timerElement.textContent = formatTime(secondsRemaining);
   timerElement.classList.toggle("timer-warning", secondsRemaining <= 120);
 }
@@ -67,6 +70,8 @@ function finishExam() {
   document.querySelector("#score-percentage").textContent = percentage;
   document.querySelector("#result-message").textContent = message;
   document.querySelector("#result-detail").textContent = `Respuestas correctas: ${correctAnswers} de ${questions.length}.`;
+  const whatsappText = `Hola Darlene! Hice el test de nivel de inglés y saqué ${percentage}% (${correctAnswers} de ${questions.length} correctas).`;
+  document.querySelector("#result-whatsapp").href = `https://wa.me/5493425202975?text=${encodeURIComponent(whatsappText)}`;
   quizScreen.hidden = true;
   resultScreen.hidden = false;
   document.querySelector("#result-title").focus({ preventScroll: true });
@@ -78,16 +83,22 @@ function startExam() {
   quizScreen.hidden = false;
   renderQuestions();
   updateProgress();
+  examDeadline = Date.now() + EXAM_DURATION_SECONDS * 1000;
   updateTimer();
   window.scrollTo({ top: 0, behavior: "smooth" });
   timerInterval = window.setInterval(() => {
-    secondsRemaining -= 1;
     updateTimer();
     if (secondsRemaining <= 0) finishExam();
   }, 1000);
 }
 
 document.querySelector("#start-test").addEventListener("click", startExam);
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden || !examDeadline || examFinished) return;
+  updateTimer();
+  if (secondsRemaining <= 0) finishExam();
+});
 
 quizForm.addEventListener("change", (event) => {
   const input = event.target;
