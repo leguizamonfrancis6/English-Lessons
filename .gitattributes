@@ -1,0 +1,2 @@
+# Todo el texto se guarda con saltos de línea LF (evita los avisos "LF will be replaced by CRLF")
+* text=auto eol=lf
