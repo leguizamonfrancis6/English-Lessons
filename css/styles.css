@@ -113,8 +113,9 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
 .hero-test { grid-column: 2 / 4; grid-row: 3; align-items: center; padding: 8px clamp(20px, 2.6vw, 38px) 20px; }
 .test-invitation { position: relative; width: min(100%, 400px); padding: 16px 24px; background: #FCF5F3; text-align: center; }
 @media (min-width: 901px) {
-  /* Recuadro del test: centrado en x = 1172 (entre las dos columnas de nubes) y con el borde superior en y = 600 de la imagen. */
-  .hero-test { position: absolute; top: calc(600 * var(--px)); left: calc(1172 * var(--px)); width: 400px; padding: 0; transform: translateX(-50%); pointer-events: auto; }
+  /* Recuadro del test: centrado en x = 1172 (entre las dos columnas de nubes) y con el borde inferior en y = 832 de la imagen, la base del libro del dibujo.
+     El max() evita que en ventanas muy anchas y bajas suba por encima de y = 600 (se taparía con las nubes): 198 px es el alto del recuadro. */
+  .hero-test { position: absolute; top: max(calc(832 * var(--px)), calc(600 * var(--px) + 198px)); left: calc(1172 * var(--px)); width: 400px; padding: 0; transform: translate(-50%, -100%); pointer-events: auto; }
 }
 .test-card-label { margin: 0 0 2px; color: var(--hair-brown); font-size: 18px; font-weight: 500; line-height: 1.3; }
 .test-invitation h2 { margin: 0; font-family: var(--serif); font-size: 25px; font-weight: 500; line-height: 1.15; }
