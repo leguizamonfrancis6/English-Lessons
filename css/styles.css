@@ -11,14 +11,7 @@
   --ink: var(--dark-brown);
   --ink-soft: var(--hair-brown);
   --primary: var(--dark-brown);
-  --rose: var(--cream-pink);
-  --rose-deep: var(--terracotta);
-  --coral: var(--terracotta);
-  --gold: var(--terracotta);
   --paper: var(--warm-white);
-  --paper-deep: var(--cream-pink);
-  --white: var(--warm-white);
-  --line: var(--soft-salmon);
   --serif: "Fraunces", Georgia, serif;
   --sans: "DM Sans", "Trebuchet MS", sans-serif;
   --content: 1160px;
@@ -94,16 +87,12 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
 .hero-cloud-3 { --x: 812; --y: 430; --w: 284; --tx: 141; --ty: 78; --tw: 200; }
 .hero-cloud-4 { --x: 1250; --y: 430; --w: 285; --tx: 142; --ty: 77; --tw: 200; }
 .hero-column { position: relative; z-index: 1; display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: 24px; }
-.hero-story { grid-column: 1; grid-row: 1 / 4; justify-content: flex-start; padding: clamp(84px, 12vh, 112px) 18px 20px 7%; }
-.hero-story h1 { max-width: 500px; color: var(--dark-brown); font-size: clamp(28px, 2.7vw, 37px); line-height: 1.1; }
 .eyebrow { margin: 0 0 13px; color: var(--terracotta); font-size: 11px; font-weight: 700; letter-spacing: .1em; line-height: 1.3; text-transform: uppercase; }
 .hero h1,
 .about-copy h2,
 .contact-heading h2,
 .test-panel h1,
 .result-panel h1 { margin: 0; font-family: var(--serif); font-weight: 500; line-height: 1.08; }
-.hero h1 { max-width: 420px; font-size: clamp(34px, 3.3vw, 51px); }
-.hero-intro { max-width: 355px; margin: 19px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
 .hero-options { grid-column: 2 / 4; grid-row: 1 / 3; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(150px, 1fr)); gap: 8px 14px; align-content: stretch; padding: 18px clamp(20px, 2.6vw, 38px); }
 .brush-item { display: grid; min-width: 0; min-height: 150px; place-items: center; }
 .brush-copy { position: relative; z-index: 1; width: min(82%, 280px); color: var(--dark-brown); text-align: center; }
@@ -175,6 +164,8 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
 .back-top { color: var(--hair-brown); text-decoration: none; }
 .reveal { opacity: 0; transform: translateY(15px); transition: opacity .65s ease, transform .65s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+/* Desde 601 px las nubes y el recuadro del test se ven al cargar la página: aparecen de entrada, sin esperar la animación. */
+@media (min-width: 601px) { .hero .reveal { opacity: 1; transform: translateY(0); transition: none; } }
 
 .test-page { display: flex; min-height: 100svh; flex-direction: column; background: radial-gradient(ellipse at 6% 20%, rgb(251 231 222 / 75%), transparent 34%), var(--warm-white); }
 .test-header { position: relative; }
@@ -214,14 +205,13 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
 .result-score span:last-child { font-size: .47em; }
 .result-message { max-width: 520px; margin: 0 auto; color: var(--hair-brown); font-size: 15px; }
 .result-detail { margin: 15px 0 0; color: var(--hair-brown); font-size: 12px; }
+.not-found-message { margin-top: 18px; }
 .result-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 29px; }
 .test-footer { margin-top: auto; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); grid-template-rows: minmax(600px, auto) minmax(220px, auto) auto; min-height: auto; background-color: var(--warm-white); }
   .hero::before { height: 690px; background-position: 18% top; background-size: auto 690px; }
-  .hero-story { grid-column: 1; grid-row: 1; min-height: 600px; padding: 96px 18px 20px 32px; }
-  .hero-story h1 { max-width: 340px; font-size: 31px; }
   .hero-stage,
   .hero-canvas { display: contents; }
   /* .hero-stage tiene pointer-events: none (se hereda): sin esto no se pueden tocar las opciones ni el botón del test. */
@@ -234,7 +224,7 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
   .brush-copy h2 { font-size: 17px; }
   .brush-copy p { font-size: 12px; }
   /* Nubes en pantallas chicas: la forma de la nube como fondo que se estira a toda la opción (en computadora siguen los SVG del HTML). */
-  .brush-item { --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='812 305 284 147' preserveAspectRatio='none'%3E%3Cpath fill='%23FCF5F3' fill-rule='evenodd' d='M930.5 305.5L917.5 307.2L898.5 312.2L887.5 316.3L874.5 322.1L860.5 330.3L853.5 335.3L844.4 343.5L837.4 351.5L834 357.5L832.2 362.5L832 365.5L833.5 365.3L833.9 366.5L832 369.5L831.4 372.5L832.2 375.5L833.5 376.3L837.5 374.2L838.2 374.5L838.5 375.5L826.5 384.9L818 393.5L814.1 400.5L812.4 406.5L812.2 409.5L812.3 413.5L813.2 417.5L816.5 423.5L823.5 428.9L827.5 429.3L826.9 431.5L827.5 432.9L833.5 436.7L835.6 436.5L836.1 438.5L837.5 439.8L843.5 443.6L853.5 448L859.5 449.9L869.5 451.3L879.5 451.1L891.5 449.9L922.5 444.3L938.5 442.7L949.5 442.3L957.5 442.4L968.5 443.5L976.5 445.1L993.5 449.7L1004.5 451.6L1013.5 451.8L1025.5 450.8L1031.5 449.9L1039.5 447.7L1055.5 441.5L1056.3 440.5L1054.2 439.5L1069.5 431.9L1078.5 425.9L1085.9 418.5L1089.8 413.5L1093.8 406.5L1094.9 402.5L1095.3 397.5L1094.5 396.7L1089.5 398.7L1088.7 398.5L1089 397.5L1092.2 394.5L1095.4 390.5L1095.6 389.5L1093.5 387.5L1092.5 387.3L1085.5 391.1L1084.5 391.4L1084 390.5L1089.8 381.5L1090.9 377.5L1090.7 375.5L1088.5 371L1082.5 375.1L1081.5 375.5L1080.8 374.5L1085.8 369.5L1086.3 367.5L1085.5 366.9L1083.5 368.2L1081.5 367.5L1078.5 368.1L1075.5 369.2L1072.5 371.1L1071.9 370.5L1073.2 366.5L1074.2 359.5L1071.8 351.5L1070.7 348.5L1068.1 344.5L1062.5 338.4L1059.5 335.9L1051.5 331.4L1041.5 327.2L1033.5 325.1L1024.5 324.2L1015.5 324.1L1007.5 325L990.5 328.2L979.5 327.9L978.4 327.5L979.1 326.5L981.5 325.1L985.5 325.9L992.5 323.8L996.6 323.5L993.3 319.5L993.1 318.5L993.8 317.5L993.5 317.1L987.5 314.1L972.5 308.2L963.5 306.2L945.5 304.8Z'/%3E%3Cpath fill='%23F8E0DE' fill-rule='evenodd' d='M924.5 325.4L910.5 328.5L901.5 331.6L889.5 336.7L880.5 342.2L870.5 350.1L863 358.5L857 369.5L855.4 375.5L854.7 376.5L852.5 376.3L849.5 377.5L846.5 379.5L844 382.5L843.8 385.5L845.3 392.5L841.9 399.5L840.9 406.5L841.4 410.5L843.5 416.5L849.5 423.4L853.5 426.6L857.2 428.5L859.5 431.1L868.5 436.9L873.5 438.7L883.5 440.6L896.5 441.9L911.5 440.8L924.5 439L939.5 440L940.5 439L960.5 439L961.5 440L971.5 439.9L972.5 440.9L976.5 441L977.5 442L980.5 442L981.5 443L984.5 442.9L985.5 443.6L1003.5 442.7L1021.5 439.1L1030.5 436.7L1034.5 435L1051.5 424.1L1055.1 420.5L1061.8 411.5L1064.6 406.5L1067.6 398.5L1068.1 392.5L1067.8 386.5L1066.9 383.5L1065.8 381.5L1063.5 379.7L1060.5 379.9L1059.2 379.5L1059.1 374.5L1058.1 369.5L1053.9 361.5L1050.5 356.5L1047.5 353.8L1036.5 347.7L1032.8 344.5L1023.5 341.4L1018.5 336.7L1015.5 335L998.5 330.3L997.5 330.2L996.5 330.9L975.5 331L974.5 328.6L961.5 330.7L953.5 328L941.5 325.2Z'/%3E%3C/svg%3E"); position: relative; background: var(--cloud) center / 100% 160px no-repeat; }
+  .brush-item { position: relative; background: url("../assets/img/cloud-light.svg") center / 100% 160px no-repeat; }
   .brush-copy { position: static; width: 74%; }
   /* Toda la nube funciona como link: el ::after del enlace cubre la opción completa. */
   .brush-copy a::after { position: absolute; z-index: 2; inset: 0; content: ""; }
@@ -272,14 +262,12 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
   /* El centro de la ilustración está en x = 388 de 901 px de alto (43,06%): se alinea con el centro de la pantalla. */
   .hero::before { top: 56px; height: var(--hero-img); background-position: calc(50vw - var(--hero-img) * .4306) bottom; background-size: auto var(--hero-img); }
   .hero-column { width: 100%; padding-inline: 24px; }
-  .hero-story { grid-column: 1; grid-row: 1; min-height: 0; padding: 74px 24px 20px; }
-  .hero-story h1 { max-width: 390px; font-size: 30px; line-height: 1.12; }
   /* Título centrado entre el header y la nube del dibujo (que empieza al 43,73% del alto de la imagen):
      el margen lleva al punto medio y el translate sube la mitad del bloque (texto + línea decorativa de .57em). */
   .hero .hero-title { max-width: 390px; margin: calc(var(--hero-img) * .2186) 24px 0; font-size: 30px; line-height: 1.12; transform: translateY(calc(-50% - .285em)); }
   .hero-options { grid-column: 1; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(170px, auto)); gap: 6px; padding: 14px 10px 6px; }
   /* Sobre el fondo crema las nubes van en rosa (el blanco de computadora no se vería). */
-  .brush-item { --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='812 305 284 147' preserveAspectRatio='none'%3E%3Cpath fill='%23FBE7DE' fill-rule='evenodd' d='M930.5 305.5L917.5 307.2L898.5 312.2L887.5 316.3L874.5 322.1L860.5 330.3L853.5 335.3L844.4 343.5L837.4 351.5L834 357.5L832.2 362.5L832 365.5L833.5 365.3L833.9 366.5L832 369.5L831.4 372.5L832.2 375.5L833.5 376.3L837.5 374.2L838.2 374.5L838.5 375.5L826.5 384.9L818 393.5L814.1 400.5L812.4 406.5L812.2 409.5L812.3 413.5L813.2 417.5L816.5 423.5L823.5 428.9L827.5 429.3L826.9 431.5L827.5 432.9L833.5 436.7L835.6 436.5L836.1 438.5L837.5 439.8L843.5 443.6L853.5 448L859.5 449.9L869.5 451.3L879.5 451.1L891.5 449.9L922.5 444.3L938.5 442.7L949.5 442.3L957.5 442.4L968.5 443.5L976.5 445.1L993.5 449.7L1004.5 451.6L1013.5 451.8L1025.5 450.8L1031.5 449.9L1039.5 447.7L1055.5 441.5L1056.3 440.5L1054.2 439.5L1069.5 431.9L1078.5 425.9L1085.9 418.5L1089.8 413.5L1093.8 406.5L1094.9 402.5L1095.3 397.5L1094.5 396.7L1089.5 398.7L1088.7 398.5L1089 397.5L1092.2 394.5L1095.4 390.5L1095.6 389.5L1093.5 387.5L1092.5 387.3L1085.5 391.1L1084.5 391.4L1084 390.5L1089.8 381.5L1090.9 377.5L1090.7 375.5L1088.5 371L1082.5 375.1L1081.5 375.5L1080.8 374.5L1085.8 369.5L1086.3 367.5L1085.5 366.9L1083.5 368.2L1081.5 367.5L1078.5 368.1L1075.5 369.2L1072.5 371.1L1071.9 370.5L1073.2 366.5L1074.2 359.5L1071.8 351.5L1070.7 348.5L1068.1 344.5L1062.5 338.4L1059.5 335.9L1051.5 331.4L1041.5 327.2L1033.5 325.1L1024.5 324.2L1015.5 324.1L1007.5 325L990.5 328.2L979.5 327.9L978.4 327.5L979.1 326.5L981.5 325.1L985.5 325.9L992.5 323.8L996.6 323.5L993.3 319.5L993.1 318.5L993.8 317.5L993.5 317.1L987.5 314.1L972.5 308.2L963.5 306.2L945.5 304.8Z'/%3E%3Cpath fill='%23FDF0EA' fill-rule='evenodd' d='M924.5 325.4L910.5 328.5L901.5 331.6L889.5 336.7L880.5 342.2L870.5 350.1L863 358.5L857 369.5L855.4 375.5L854.7 376.5L852.5 376.3L849.5 377.5L846.5 379.5L844 382.5L843.8 385.5L845.3 392.5L841.9 399.5L840.9 406.5L841.4 410.5L843.5 416.5L849.5 423.4L853.5 426.6L857.2 428.5L859.5 431.1L868.5 436.9L873.5 438.7L883.5 440.6L896.5 441.9L911.5 440.8L924.5 439L939.5 440L940.5 439L960.5 439L961.5 440L971.5 439.9L972.5 440.9L976.5 441L977.5 442L980.5 442L981.5 443L984.5 442.9L985.5 443.6L1003.5 442.7L1021.5 439.1L1030.5 436.7L1034.5 435L1051.5 424.1L1055.1 420.5L1061.8 411.5L1064.6 406.5L1067.6 398.5L1068.1 392.5L1067.8 386.5L1066.9 383.5L1065.8 381.5L1063.5 379.7L1060.5 379.9L1059.2 379.5L1059.1 374.5L1058.1 369.5L1053.9 361.5L1050.5 356.5L1047.5 353.8L1036.5 347.7L1032.8 344.5L1023.5 341.4L1018.5 336.7L1015.5 335L998.5 330.3L997.5 330.2L996.5 330.9L975.5 331L974.5 328.6L961.5 330.7L953.5 328L941.5 325.2Z'/%3E%3C/svg%3E"); background-size: 100% 100%; }
+  .brush-item { background-image: url("../assets/img/cloud-pink.svg"); background-size: 100% 100%; }
   .brush-copy { width: 76%; }
   .brush-copy h2 { font-size: 16px; }
   .brush-copy p { margin-top: 5px; font-size: 14px; line-height: 1.3; }

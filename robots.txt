@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://englishlessons.com.ar/sitemap.xml

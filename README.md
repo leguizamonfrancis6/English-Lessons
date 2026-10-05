@@ -9,11 +9,13 @@ Sitio estático (HTML, CSS y JavaScript sin dependencias). No tiene backend y el
 ```
 index.html          Inicio, sobre mí y contacto
 test.html           Test de nivel (15 preguntas, 20 minutos)
+404.html            Página para direcciones inexistentes (GitHub Pages la usa sola)
+robots.txt, sitemap.xml  Para buscadores
 css/styles.css
 js/main.js          Animaciones de entrada y año del footer
 js/test.js          Lógica del test y temporizador
 js/questions.js     Preguntas y respuestas correctas
-assets/img/         Imágenes y favicon
+assets/img/         Imágenes, nubes (versión celular) y favicon
 ```
 
 ## Ver en local

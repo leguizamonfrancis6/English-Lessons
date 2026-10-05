@@ -94,6 +94,13 @@ function startExam() {
 
 document.querySelector("#start-test").addEventListener("click", startExam);
 
+// Con el test en curso, avisa antes de cerrar o salir de la página (se perderían las respuestas).
+window.addEventListener("beforeunload", (event) => {
+  if (!examDeadline || examFinished) return;
+  event.preventDefault();
+  event.returnValue = "";
+});
+
 document.addEventListener("visibilitychange", () => {
   if (document.hidden || !examDeadline || examFinished) return;
   updateTimer();
