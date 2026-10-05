@@ -82,8 +82,8 @@ input:focus-visible + .answer-marker { outline: 3px solid var(--terracotta); out
 /* Nubes, en píxeles de la imagen: --x / --y esquina superior izquierda y --w ancho de la nube; --tx / --ty centro del texto medido desde esa esquina y --tw su ancho. */
 .hero-cloud-outer { fill: #FCF5F3; }
 .hero-cloud-inner { fill: #F8E0DE; }
-.hero-cloud-1 { --x: 812; --y: 250; --w: 284; --tx: 142; --ty: 79; --tw: 200; }
-.hero-cloud-2 { --x: 1250; --y: 250; --w: 282; --tx: 134; --ty: 80; --tw: 200; }
+.hero-cloud-1 { --x: 812; --y: 210; --w: 284; --tx: 142; --ty: 79; --tw: 200; }
+.hero-cloud-2 { --x: 1250; --y: 209; --w: 282; --tx: 134; --ty: 80; --tw: 200; }
 .hero-cloud-3 { --x: 812; --y: 430; --w: 284; --tx: 141; --ty: 78; --tw: 200; }
 .hero-cloud-4 { --x: 1250; --y: 430; --w: 285; --tx: 142; --ty: 77; --tw: 200; }
 .hero-column { position: relative; z-index: 1; display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: 24px; }
